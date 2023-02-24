@@ -1,7 +1,7 @@
 import { TileLayer, Tilemap } from "@7c00/canvas-tilemap";
 import { store, updateMapData } from ".";
-import mapDataJson from "../../data/map-data.json";
-import { MapData } from "./map-data-types";
+import mapDataJson from "../../data/maps-data.json";
+import { MapData } from "../../data/maps-data-types";
 
 const defaultMapOptions = { tileSize: 512, minZoom: 0, maxZoom: 3 };
 export let tilemap: Tilemap;
@@ -14,11 +14,11 @@ export async function initTilemap(element: HTMLElement | null) {
   mapDataList = await (await fetch(mapDataJson)).json();
   store.mapData = mapDataList[0];
   updateMapData();
-  const size = store.mapData.size as [number, number];
-  tilemap = new Tilemap({ element, size, origin: [0, 0], maxZoom: 0.5 });
+  const { size, origin, id } = store.mapData;
+  tilemap = new Tilemap({ element, size, origin, maxZoom: 0.5 });
   defaultTileLayer = new TileLayer(tilemap, {
     ...defaultMapOptions,
-    getTileUrl: (x, y, z) => `tiles/${z}_${x}_${y}.webp`,
+    getTileUrl: (x, y, z) => `tiles/${id}/${z}_${x}_${y}.webp`,
   });
   tilemap.tileLayers.add(defaultTileLayer);
 }

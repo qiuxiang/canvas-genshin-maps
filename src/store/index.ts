@@ -1,7 +1,7 @@
 import { MarkerLayer } from "@7c00/canvas-tilemap";
 import { proxy } from "valtio";
 import { proxySet } from "valtio/utils";
-import { MapData, MapPointLabel } from "./map-data-types";
+import { MapData, MapPointLabel } from "../../data/maps-data-types";
 import { tilemap } from "./tilemap";
 
 const pointLabelMap = {} as Record<number, MapPointLabel>;
@@ -47,6 +47,7 @@ export async function toggleActiveLabel(id: number) {
       markerLayerMap[id] = markerLayer;
     }
     tilemap.markerLayers.add(markerLayer);
+    tilemap.draw();
   }
 }
 

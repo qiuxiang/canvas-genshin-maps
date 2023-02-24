@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "esbuild": "esbuild src/index.tsx --bundle --outdir=dist --jsx=automatic --loader:.png=file --loader:.json=file",
+    "esbuild": "esbuild src/index.tsx --bundle --outdir=dist --loader:.png=file --loader:.json=file",
     "build": "npm run tailwind && npm run esbuild -- --minify",
     "build-html": "esbuild --bundle --platform=node scripts/build-html.ts | node",
     "tailwind": "tailwind -i src/index.css -o dist/index.css",

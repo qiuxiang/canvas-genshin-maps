@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
     "strict": true,
     "target": "esnext",
@@ -8,9 +7,9 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "paths": {
-      "react": ["node_modules/preact/compat"],
-      "react/jsx-runtime": ["node_modules/preact/jsx-runtime"],
-      "react-dom": ["node_modules/preact/compat"]
+      "react": ["./node_modules/preact/compat/src"],
+      "react/jsx-runtime": ["./node_modules/preact/jsx-runtime"],
+      "react-dom": ["./node_modules/preact/compat/src"]
     }
   }
 }
